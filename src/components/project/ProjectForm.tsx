@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { Button, Form } from 'antd';
-import { useAppDispatch } from '../../app/redux-hooks';
+import { useAppDispatch, useAppSelector } from '../../app/redux-hooks';
 import { createProjectInfo } from '../../features/project/projectSlice';
 import CustomInput from '../CustomInput';
 
@@ -21,14 +21,20 @@ export default function ProjectForm({
   disabled: boolean;
 }) {
   const dispatch = useAppDispatch();
+  const [form] = Form.useForm();
+  const { projectInformations } = useAppSelector((state) => state.project);
   const onFinish = (values: ProjectInfo) => {
     console.log('Success:', values);
     dispatch(createProjectInfo(values));
     setCurrent(current + 1);
   };
+  if (disabled) {
+    form.setFieldsValue(projectInformations);
+  }
 
   return (
     <Form
+      form={form}
       disabled={disabled}
       initialValues={{ remember: true }}
       onFinish={onFinish}

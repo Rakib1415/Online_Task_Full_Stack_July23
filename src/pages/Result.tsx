@@ -1,5 +1,7 @@
 import { Button } from 'antd';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useReactToPrint } from 'react-to-print';
 import CustomLineChart from '../components/CustomLineChart';
 import ResultTable from '../components/ResultTable';
 import useProject from '../hooks/useProject';
@@ -35,9 +37,15 @@ import useProject from '../hooks/useProject';
 function Result() {
   const navigate = useNavigate();
   const { data } = useProject();
+  const tableRef = React.useRef<HTMLDivElement>(null);
+  const generatePDF = useReactToPrint({
+    content: () => tableRef.current,
+    documentTitle: 'projectInfo',
+    onAfterPrint: () => alert('Data saved in PDF format'),
+  });
   return (
     <div className="w-[1000px] mx-auto space-y-8 my-5">
-      <div className="dashboard-billing performance-card">
+      <div ref={tableRef} className="dashboard-billing performance-card">
         <ResultTable data={data} />
       </div>
       <div className="flex justify-between">
@@ -48,6 +56,7 @@ function Result() {
           Create Project
         </Button>
         <Button
+          onClick={generatePDF}
           htmlType="submit"
           className="bg-purple-700 text-white text-sm text-bold  w-[135px] h-[49px] "
         >

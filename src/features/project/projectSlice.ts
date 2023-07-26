@@ -17,12 +17,12 @@ const initialState: State = {
     contractorName: '',
   },
   projectSettings: {
-    max_x: 0,
-    max_y: 0,
-    max_z: 0,
-    min_x: 0,
-    min_y: 0,
-    min_z: 0,
+    max_x: NaN,
+    max_y: NaN,
+    max_z: NaN,
+    min_x: NaN,
+    min_y: NaN,
+    min_z: NaN,
   },
 };
 
@@ -36,8 +36,13 @@ const projectSlice = createSlice({
     createSettings: (state: State, action: PayloadAction<ProjectSettings>) => {
       state.projectSettings = action.payload;
     },
+    clearProjectItem: (state: State) => {
+      state.projectInformations = initialState.projectInformations;
+      state.projectSettings = initialState.projectSettings;
+    },
   },
 });
 
 export default projectSlice.reducer;
-export const { createProjectInfo, createSettings } = projectSlice.actions;
+export const { createProjectInfo, createSettings, clearProjectItem } =
+  projectSlice.actions;

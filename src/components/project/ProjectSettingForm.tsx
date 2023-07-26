@@ -2,9 +2,13 @@
 import { Button, Form } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/redux-hooks';
-import { createSettings } from '../../features/project/projectSlice';
+import {
+  clearProjectItem,
+  createSettings,
+} from '../../features/project/projectSlice';
 import { addProject } from '../../features/result/resultSlice';
 import CustomInput from '../CustomInput';
+import ReadFile from '../ReadFile';
 import ProjectForm from './ProjectForm';
 
 export interface ProjectSettings {
@@ -25,7 +29,12 @@ export default function ProjectSettingForm({
 }) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { projectInformations } = useAppSelector((state) => state.project);
+  const [form] = Form.useForm();
+  const { projectInformations, projectSettings } = useAppSelector(
+    (state) => state.project
+  );
+
+  form.setFieldsValue(projectSettings);
 
   const onFinish = (values: ProjectSettings) => {
     dispatch(createSettings(values));
@@ -35,7 +44,7 @@ export default function ProjectSettingForm({
         projectSettings: values,
       })
     );
-    console.log('Success:', values);
+    dispatch(clearProjectItem());
     navigate('/result');
   };
   return (
@@ -47,7 +56,9 @@ export default function ProjectSettingForm({
       <h2 className="text-2xl text-center mt-3 text-purple-700 font-bold">
         Project Setting Informations :{' '}
       </h2>
+      <ReadFile />
       <Form
+        form={form}
         initialValues={{ remember: true }}
         onFinish={onFinish}
         className="w-[1000px] mx-auto space-y-8 my-5"
@@ -100,7 +111,10 @@ export default function ProjectSettingForm({
         <div className="flex justify-between">
           <Button
             className="bg-white text-purple-700 text-[18px] opacity-75 font-bold w-[135px] h-[49px]"
-            onClick={() => setCurrent(current - 1)}
+            onClick={() => {
+              setCurrent(current - 1);
+              dispatch(clearProjectItem());
+            }}
           >
             Back
           </Button>
