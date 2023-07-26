@@ -1,13 +1,16 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Coordination } from '../../components/ReadFile';
 import { State } from '../project/projectSlice';
 
 interface ProjectItems {
   projects: Array<State>;
+  coordinations: Array<Coordination>;
 }
 
 const initialState: ProjectItems = {
   projects: [],
+  coordinations: [],
 };
 
 const resultSlice = createSlice({
@@ -17,8 +20,11 @@ const resultSlice = createSlice({
     addProject: (state, action: PayloadAction<State>) => {
       state.projects.push(action.payload);
     },
+    addCoordinations: (state, action: PayloadAction<Coordination[]>) => {
+      state.coordinations = action.payload;
+    },
   },
 });
 
 export default resultSlice.reducer;
-export const { addProject } = resultSlice.actions;
+export const { addProject, addCoordinations } = resultSlice.actions;

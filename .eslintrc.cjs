@@ -25,5 +25,6 @@ module.exports = {
     'react/function-component-definition': 0,
     'react/jsx-props-no-spreading': 0,
     'no-console': 0,
+    'import/no-cycle': 0,
   },
 };

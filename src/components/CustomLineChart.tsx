@@ -1,13 +1,14 @@
 /* eslint-disable prettier/prettier */
 import {
-    CartesianGrid,
-    Line,
-    LineChart,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis,
+  CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
+import { useAppSelector } from '../app/redux-hooks';
 
 const data = [
   {
@@ -55,11 +56,12 @@ const data = [
 ];
 
 export default function CustomLineChart() {
+  const {coordinations} = useAppSelector(state => state.result);
   return (
     <div>
       <ResponsiveContainer width="98%" height={414}>
         <LineChart
-          data={data}
+          data={coordinations}
           margin={{
             top: 30,
             right: 30,
@@ -68,17 +70,17 @@ export default function CustomLineChart() {
           }}
         >
           <CartesianGrid strokeDasharray="1" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="KP" />
           <YAxis />
           <Tooltip />
 
           <Line
             type="monotone"
-            dataKey="pv"
+            dataKey="X"
             stroke="#FF0047"
             activeDot={{ r: 8 }}
           />
-          <Line type="monotone" dataKey="uv" stroke="#6900B8" />
+          <Line type="monotone" dataKey="Z" stroke="#6900B8" />
         </LineChart>
       </ResponsiveContainer>
     </div>

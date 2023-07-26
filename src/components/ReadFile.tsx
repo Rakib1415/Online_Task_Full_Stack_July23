@@ -4,6 +4,7 @@ import Papa, { ParseResult } from 'papaparse';
 import React from 'react';
 import { useAppDispatch } from '../app/redux-hooks';
 import { createSettings } from '../features/project/projectSlice';
+import { addCoordinations } from '../features/result/resultSlice';
 import { findMaxMinCoordinate } from '../utils';
 
 export type Coordination = {
@@ -21,6 +22,7 @@ const ReadFile = () => {
         header: true,
         skipEmptyLines: true,
         complete(results: ParseResult<Coordination>) {
+          dispatch(addCoordinations(results?.data));
           const { max_x, max_y, max_z, min_x, min_y, min_z } =
             findMaxMinCoordinate(results?.data);
           dispatch(
