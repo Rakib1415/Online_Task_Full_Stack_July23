@@ -1,7 +1,7 @@
 import { Checkbox } from 'antd';
 import { useState } from 'react';
-import CreateProject from '../components/project/CreateProject';
-import ProjectSetting from '../components/project/ProjectSetting';
+import ProjectForm from '../components/project/ProjectForm';
+import ProjectSettingForm from '../components/project/ProjectSettingForm';
 
 function Home() {
   const [current, setCurrent] = useState<number>(0);
@@ -9,23 +9,25 @@ function Home() {
     switch (currentComponentNumber) {
       case 0:
         return (
-          <CreateProject
+          <ProjectForm
             setCurrent={setCurrent}
             current={currentComponentNumber}
+            disabled={false}
           />
         );
       case 1:
         return (
-          <ProjectSetting
+          <ProjectSettingForm
             current={currentComponentNumber}
             setCurrent={setCurrent}
           />
         );
       default:
         return (
-          <CreateProject
+          <ProjectForm
             setCurrent={setCurrent}
             current={currentComponentNumber}
+            disabled={false}
           />
         );
     }

@@ -1,44 +1,31 @@
 import { Form, Input } from 'antd';
 import React from 'react';
 
+const { TextArea } = Input;
+
 interface InputProps {
+  name: string;
   label: string;
   type: string;
+  message: string;
   placeHolder: string;
-  handleChange: () => void;
 }
 
 const CustomInput: React.FC<InputProps> = ({
+  name,
   label,
   type,
+  message,
   placeHolder,
-  handleChange,
-  ...rest
 }) => {
   return (
-    <>
-      <div className="text-gray-450 opacity-[0.8] text-sm font-bold">
-        {label}
-      </div>
-      <div>
-        <div className="mt-4">
-          <div className="w-full">
-            <Form.Item
-              className="float-container"
-              name={['user', 'name']}
-              rules={[{ required: true }]}
-            >
-              <Input
-                onChange={handleChange}
-                type={type}
-                placeholder={placeHolder}
-                {...rest}
-              />
-            </Form.Item>
-          </div>
-        </div>
-      </div>
-    </>
+    <Form.Item label={label} name={name} rules={[{ required: true, message }]}>
+      {type === 'textarea' ? (
+        <TextArea rows={5} placeholder={placeHolder} className=" mt-2" />
+      ) : (
+        <Input type={type} placeholder={placeHolder} />
+      )}
+    </Form.Item>
   );
 };
 

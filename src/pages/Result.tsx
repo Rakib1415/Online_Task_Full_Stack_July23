@@ -1,122 +1,58 @@
+import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import CustomLineChart from '../components/CustomLineChart';
 import ResultTable from '../components/ResultTable';
+import useProject from '../hooks/useProject';
 
-export const data = [
-  {
-    key: '1',
-    applicationName: 'App 1',
-    applicationImage: '/images/app1.png',
-    status: 'Active',
-    campaigns: 10,
-    clicks: 1000,
-    impressions: 5000,
-    goal: 10000,
-    dailyTargets: 200,
-    installs: 800,
-  },
-  {
-    key: '2',
-    applicationName: 'App 2',
-    applicationImage: '/images/app2.png',
-    status: 'Paused',
-    campaigns: 5,
-    clicks: 500,
-    impressions: 2500,
-    goal: 5000,
-    dailyTargets: 100,
-    installs: 400,
-  },
-  {
-    key: '3',
-    applicationName: 'App 3',
-    applicationImage: '/images/app2.png',
-    status: 'Stopped',
-    campaigns: 5,
-    clicks: 500,
-    impressions: 2500,
-    goal: 5000,
-    dailyTargets: 100,
-    installs: 400,
-  },
-  {
-    key: '4',
-    applicationName: 'App 4',
-    applicationImage: '/images/app2.png',
-    status: 'Active',
-    campaigns: 5,
-    clicks: 500,
-    impressions: 2500,
-    goal: 5000,
-    dailyTargets: 100,
-    installs: 400,
-  },
-  {
-    key: '5',
-    applicationName: 'App 5',
-    applicationImage: '/images/app2.png',
-    status: 'Paused',
-    campaigns: 5,
-    clicks: 500,
-    impressions: 2500,
-    goal: 5000,
-    dailyTargets: 100,
-    installs: 400,
-  },
-  {
-    key: '5',
-    applicationName: 'App 5',
-    applicationImage: '/images/app2.png',
-    status: 'Active',
-    campaigns: 5,
-    clicks: 500,
-    impressions: 2500,
-    goal: 5000,
-    dailyTargets: 100,
-    installs: 400,
-  },
-  {
-    key: '5',
-    applicationName: 'App 5',
-    applicationImage: '/images/app2.png',
-    status: 'Paused',
-    campaigns: 5,
-    clicks: 500,
-    impressions: 2500,
-    goal: 5000,
-    dailyTargets: 100,
-    installs: 400,
-  },
-  {
-    key: '5',
-    applicationName: 'App 5',
-    applicationImage: '/images/app2.png',
-    status: 'Stopped',
-    campaigns: 5,
-    clicks: 500,
-    impressions: 2500,
-    goal: 5000,
-    dailyTargets: 100,
-    installs: 400,
-  },
-  {
-    key: '5',
-    applicationName: 'App 5',
-    applicationImage: '/images/app2.png',
-    status: 'Paused',
-    campaigns: 5,
-    clicks: 500,
-    impressions: 2500,
-    goal: 5000,
-    dailyTargets: 100,
-    installs: 400,
-  },
-  // add more data objects as needed
-];
+// export const data = [
+//   {
+//     key: 1,
+//     projectName: 'first name',
+//     projectDescription: 'example description',
+//     clientName: 'faria',
+//     contractorName: 'Rohim',
+//     max_x: 23,
+//     min_x: 3,
+//     max_y: 4554,
+//     min_y: 33,
+//     max_z: 355,
+//     min_z: 22,
+//   },
+//   {
+//     key: 1,
+//     projectName: 'first name',
+//     projectDescription: 'example description',
+//     clientName: 'faria',
+//     contractorName: 'Rohim',
+//     max_x: 23,
+//     min_x: 3,
+//     max_y: 4554,
+//     min_y: 33,
+//     max_z: 355,
+//     min_z: 22,
+//   },
+// ];
 function Result() {
+  const navigate = useNavigate();
+  const { data } = useProject();
   return (
     <div className="w-[1000px] mx-auto space-y-8 my-5">
       <div className="dashboard-billing performance-card">
         <ResultTable data={data} />
+      </div>
+      <div className="flex justify-between">
+        <Button
+          onClick={() => navigate('/')}
+          className="bg-white text-purple-700 text-[18px] opacity-75 font-bold w-[180px] h-[49px]"
+        >
+          Create Project
+        </Button>
+        <Button
+          htmlType="submit"
+          className="bg-purple-700 text-white text-sm text-bold  w-[135px] h-[49px] "
+        >
+          Download Pdf
+        </Button>
       </div>
       <h2 className="text-2xl text-purple-700 font-bold">
         The result chart is look like:{' '}

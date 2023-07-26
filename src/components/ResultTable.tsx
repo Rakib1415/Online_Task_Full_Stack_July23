@@ -3,53 +3,58 @@ import { ColumnsType } from 'antd/es/table';
 
 interface DataType {
   key: string;
-  applicationName: string;
-  applicationImage: string;
-  status: string;
-  campaigns: number;
-  clicks: number;
-  impressions: number;
-  goal: number;
-  dailyTargets: number;
-  installs: number;
+  projectName: string;
+  projectDescription: string;
+  clientName: string;
+  contractorName: number;
+  max_x: number;
+  min_x: number;
+  max_y: number;
+  min_y: number;
+  max_z: number;
+  min_z: number;
 }
 
 const columns: ColumnsType<DataType> = [
   {
-    title: 'Application Name',
-    dataIndex: 'applicationName',
-    render: (text: any) => (
-      <div className="flex items-center">
-        {/* <Image src={appIcon} alt={'appicon'} width={34} height={34} /> */}
-        <div style={{ marginLeft: 8 }}>{text}</div>
-      </div>
-    ),
-    // fixed: 'left',
-    className: 'border-r-2',
+    title: 'Project Name',
+    dataIndex: 'projectName',
   },
   {
-    title: 'Campaigns',
-    dataIndex: 'campaigns',
+    title: 'Project Description',
+    dataIndex: 'projectDescription',
   },
   {
-    title: 'Clicks',
-    dataIndex: 'clicks',
+    title: 'Client Name',
+    dataIndex: 'clientName',
   },
   {
-    title: 'Impressions',
-    dataIndex: 'impressions',
+    title: 'Contractor Name',
+    dataIndex: 'contractorName',
   },
   {
-    title: 'Goal',
-    dataIndex: 'goal',
+    title: 'Max_X',
+    dataIndex: 'max_x',
   },
   {
-    title: 'Daily Targets',
-    dataIndex: 'dailyTargets',
+    title: 'Min_X',
+    dataIndex: 'min_x',
   },
   {
-    title: 'Installs',
-    dataIndex: 'installs',
+    title: 'Max_Y',
+    dataIndex: 'max_y',
+  },
+  {
+    title: 'Min_Y',
+    dataIndex: 'min_y',
+  },
+  {
+    title: 'Max_Z',
+    dataIndex: 'max_z',
+  },
+  {
+    title: 'Min_Z',
+    dataIndex: 'min_z',
   },
 ];
 

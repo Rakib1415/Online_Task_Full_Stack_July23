@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <>
       <div className="h-8 bg-slate-300" />
-      <nav className="relative bg-black">
+      <nav className="sticky top-0 z-50 bg-black">
         <div className="container px-6 py-3 ">
           <div className="flex items-center justify-center">
             <div>
