@@ -1,12 +1,13 @@
 /* eslint-disable prettier/prettier */
 import {
   CartesianGrid,
+  Legend,
   Line,
   LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
-  YAxis,
+  YAxis
 } from 'recharts';
 import { useAppSelector } from '../app/redux-hooks';
 
@@ -30,15 +31,17 @@ export default function CustomLineChart() {
           <XAxis dataKey="KP" />
           <YAxis />
           <Tooltip />
+          <Legend/>
 
           <Line
             type="monotone"
             dataKey="X"
             stroke="#FF0047"
+            strokeWidth={1}
             activeDot={{ r: 8 }}
           />
-          <Line type="monotone" dataKey="Y" stroke="#2196F3" />
-          <Line type="monotone" dataKey="Z" stroke="#6900B8" />
+          <Line type="monotone" dataKey="Y" stroke="#2196F3" strokeWidth={1} />
+          <Line type="monotone" dataKey="Z" stroke="#6900B8" strokeWidth={1} />
         </LineChart>
       </ResponsiveContainer>
     </div>
