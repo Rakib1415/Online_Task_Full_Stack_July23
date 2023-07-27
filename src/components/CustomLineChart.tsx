@@ -37,6 +37,7 @@ export default function CustomLineChart() {
             stroke="#FF0047"
             activeDot={{ r: 8 }}
           />
+          <Line type="monotone" dataKey="Y" stroke="#2196F3" />
           <Line type="monotone" dataKey="Z" stroke="#6900B8" />
         </LineChart>
       </ResponsiveContainer>
