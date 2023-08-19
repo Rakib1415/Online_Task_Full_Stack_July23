@@ -9,7 +9,7 @@ export interface State {
   projectSettings: ProjectSettings;
 }
 
-const initialState: State = {
+export const initialState: State = {
   projectInformations: {
     projectName: '',
     projectDescription: '',
@@ -17,12 +17,12 @@ const initialState: State = {
     contractorName: '',
   },
   projectSettings: {
-    max_x: NaN,
-    max_y: NaN,
-    max_z: NaN,
-    min_x: NaN,
-    min_y: NaN,
-    min_z: NaN,
+    max_x: null,
+    max_y: null,
+    max_z: null,
+    min_x: null,
+    min_y: null,
+    min_z: null,
   },
 };
 

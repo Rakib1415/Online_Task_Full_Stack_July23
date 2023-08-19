@@ -12,12 +12,12 @@ import ReadFile from '../ReadFile';
 import ProjectForm from './ProjectForm';
 
 export interface ProjectSettings {
-  max_x: number;
-  max_y: number;
-  max_z: number;
-  min_x: number;
-  min_y: number;
-  min_z: number;
+  max_x: number | null;
+  max_y: number | null;
+  max_z: number | null;
+  min_x: number | null;
+  min_y: number | null;
+  min_z: number | null;
 }
 
 export default function ProjectSettingForm({

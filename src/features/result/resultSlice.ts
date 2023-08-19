@@ -3,12 +3,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Coordination } from '../../components/ReadFile';
 import { State } from '../project/projectSlice';
 
-interface ProjectItems {
+export interface ProjectItems {
   projects: Array<State>;
   coordinations: Array<Coordination>;
 }
 
-const initialState: ProjectItems = {
+export const initialState: ProjectItems = {
   projects: [],
   coordinations: [],
 };
